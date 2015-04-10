@@ -8,6 +8,10 @@ class Tweet < ActiveRecord::Base
 
   WORDLIST = ["coke", "coca-cola", "diet cola"]
 
+  scope :positive, -> { Tweet.where("sentiment > 0" ) }
+  scope :neutral, -> { Tweet.where("sentiment = 0" ) }
+  scope :negative, -> { Tweet.where("sentiment < 0" ) }
+
 
   # METHODS
   #-----------------------------------------------------------------------
@@ -50,6 +54,8 @@ class Tweet < ActiveRecord::Base
       end
     end
   end
+
+  
 
   private
   def self.word_checker(message)

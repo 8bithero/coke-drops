@@ -1,0 +1,14 @@
+
+  <% tweets.order(sentiment: :desc).each do |tweet| %>
+    <a href="#" class="list-group-item">
+      <div class="pull-left">
+        <div class="drop drop-sm <%= sentiment_colour_finder(tweet.sentiment) %>"><%= image_tag("#{sentiment_colour_finder(tweet.sentiment)}.png", class: "drop-img") %></div>
+        <div class="center-block"><%= tweet.sentiment %></div>
+      </div>
+
+      <span class="badge"><%= tweet.counter %></span>
+      <h4 class="list-group-item-heading"><%= tweet.user_handle %></h4>
+      <p class="list-group-item-text item-message"><%= tweet.message %></p>
+      <!-- <p class="pull-right">message id: <%= tweet.message_id %></p> -->
+    </a>
+  <% end %>

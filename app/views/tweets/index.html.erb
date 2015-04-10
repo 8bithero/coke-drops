@@ -31,6 +31,7 @@
         </div>
 
         <div class="pull-left">
+        
           <div class="drop drop-md negative" onclick="document.getElementById('negative-drop').click();">
             <div class="rotate ">     
               <button id="negative-drop"class=" cbutton cbutton--complex cbutton--box cbutton--box-color-6 cbutton--effect-dejan ">
@@ -44,49 +45,28 @@
           </div>
         </div>
         <div>Negative</div>
+        
+        
       </div>
-<p><%= link_to "Fetch more messages", tweets_path, method: :post, class: "btn btn-lg btn-success" %></p>
-<p>Total Messages: <%= Tweet.all.count %></p>
+      <p><%= link_to "Fetch more messages", tweets_path, method: :post, class: "btn btn-lg btn-success" %></p>
+      <p>Total Messages: <%= Tweet.all.count %></p>
 
-<br/>
-<hr/>
-<br/>
+      <br/>
+      <hr/>
 
-
-
-<div class="list-group">
-  <% Tweet.all.order(sentiment: :desc).each do |tweet| %>
-    <a href="#" class="list-group-item">
-      <div class="pull-left">
-        <div class="drop drop-sm <%= sentiment_colour_finder(tweet.sentiment) %>"><%= image_tag("#{sentiment_colour_finder(tweet.sentiment)}.png", class: "drop-img") %></div>
-        <div class="center-block"><%= tweet.sentiment %></div>
+      <span class="pull-right">
+        Show:
+        <%= link_to "all", update_list_path(:show => "all"), :remote => true %> | 
+        <%= link_to "positive", update_list_path(:show => "positive"), :remote => true %> | 
+        <%= link_to "neutral", update_list_path(:show => "neutral"), :remote => true %> | 
+        <%= link_to "negative", update_list_path(:show => "negative"), :remote => true %>
+      </span>
+      <br/>
+      <div id="tweets_list" class="list-group">
+        <%= render partial: "tweet_list", locals: { tweets: @tweets} %>
       </div>
 
-      <span class="badge"><%= tweet.counter %></span>
-      <h4 class="list-group-item-heading"><%= tweet.user_handle %></h4>
-      <p class="list-group-item-text item-message"><%= tweet.message %></p>
-      <!-- <p class="pull-right">message id: <%= tweet.message_id %></p> -->
-    </a>
-  <% end %>
-</div>
-<div class="box">
-          <h2 class="box__title">Dejan</h2>
-          <button class="cbutton cbutton--complex cbutton--box cbutton--box-color-4 cbutton--effect-dejan">
-            <span class="cbutton__text">Colorpicker</span>
-            <span class="cbutton__helper cbutton__helper--first"><img src="assets/splash_1.svg#color-4" /></span>
-            <span class="cbutton__helper cbutton__helper--second"><img src="assets/splash_2.svg#color-4" /></span>
-          </button>
-          <button class="cbutton cbutton--complex cbutton--box cbutton--box-color-5 cbutton--effect-dejan">
-            <span class="cbutton__text">Colorpicker</span>
-            <span class="cbutton__helper cbutton__helper--first"><img src="assets/splash_1.svg#color-5" /></span>
-            <span class="cbutton__helper cbutton__helper--second"><img src="assets/splash_2.svg#color-5" /></span>
-          </button>
-          <button class="cbutton cbutton--complex cbutton--box cbutton--box-color-6 cbutton--effect-dejan">
-            <span class="cbutton__text">Colorpicker</span>
-            <span class="cbutton__helper cbutton__helper--first"><img src="assets/splash_1.svg#color-6" /></span>
-            <span class="cbutton__helper cbutton__helper--second"><img src="assets/splash_2.svg#color-6" /></span>
-          </button>
-        </div>
+
 
         <script>
       (function() {

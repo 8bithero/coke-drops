@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   # post 'fetch_tweets' => 'tweets#fetch_tweets'
 
-  resources :tweets
+  resources :tweets do
+    delete 'reset', on: :collection
+    # get 'update_list', on: :collection
+  end
+  get "/update_list" => 'tweets#update_list'#, as: 'fetch_tweets'
+  # get "/foobar" => 'tweets#foobar'
   root 'tweets#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

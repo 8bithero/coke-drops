@@ -8,6 +8,13 @@ body {
     padding-top: 20px;
     font-family: 'Source Sans Pro', sans-serif;
 }
+.filter-01{-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;}
+
 .logo-drop {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -46,7 +53,7 @@ body {
   -webkit-transform: rotateZ(-45deg)   ;
   transform: rotateZ(-45deg)   ;
   cursor: pointer;
-  box-shadow: 3px 2px 1px inset;
+  /*box-shadow: 3px 2px 1px inset;*/
 }
 .drop-sm {
   width: 2em;

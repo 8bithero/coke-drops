@@ -13,6 +13,12 @@
         
         <div class="logo-drop pull-left"></div>
         <h3 class="text-muted logo-text">CokeDrops</h3>
+        <% if Tweet.all.any? %>
+        <div class="pull-right">
+          <%= link_to "Reset DB", reset_tweets_path, method: :delete,
+data: { confirm: "Sure you want to delete all messages?" },
+title: "Reset Database" %></div>
+<% end %>
       </div>
 
       
