@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all.order(sentiment: :desc)
+    @tweets = Tweet.all#.order(sentiment: :desc)
     @filters = { positive: 1, neutral: 1, negative: 1}
     # @tweet = Tweet.new
   end

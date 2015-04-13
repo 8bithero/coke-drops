@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= modernizr.custom.js
+//= classie.js
 //= require_tree .

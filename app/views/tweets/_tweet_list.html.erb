@@ -1,14 +1,33 @@
+<% tweets.order(sentiment: :desc).each do |tweet| %>
+  <div href="#" class="list-group-item tweet-item <%= 'highlight' if tweet.censored? %>" data-sentiment="<%= sentiment_colour_finder(tweet.sentiment) %>" data-censored="<%= tweet.censored? %>">
+    <div class="pull-left">
+      <div class="drop drop-sm <%= sentiment_colour_finder(tweet.sentiment) %>"><%= image_tag("#{sentiment_colour_finder(tweet.sentiment)}.png", class: "drop-img") %></div>
+      <div class="drop-sm-text"><%= tweet.sentiment %></div>
+    </div>
 
-  <% tweets.order(sentiment: :desc).each do |tweet| %>
-    <a href="#" class="list-group-item">
-      <div class="pull-left">
-        <div class="drop drop-sm <%= sentiment_colour_finder(tweet.sentiment) %>"><%= image_tag("#{sentiment_colour_finder(tweet.sentiment)}.png", class: "drop-img") %></div>
-        <div class="center-block"><%= tweet.sentiment %></div>
+    <span class="badge" data-toggle="tooltip" data-placement="right" title="Tweet received <%= pluralize(tweet.counter, 'time') %>."><%= tweet.counter %></span>
+    
+    <h4 class="list-group-item-heading"><a class="md-trigger item-title <%= sentiment_colour_finder(tweet.sentiment) %>-text" data-modal="modal-<%= tweet.message_id %>"><%= tweet.user_handle %></a></h4>
+    <p class="list-group-item-text item-message"><%= tweet.message %></p>
+    <!-- <p class="pull-right">message id: <%= tweet.message_id %></p> -->
+  </div>
+  <div class="md-modal md-effect" id="modal-<%= tweet.message_id %>">
+    <div class="md-content">
+      <h3 class="md-title"><%= tweet.user_handle %></h3>
+      <div>
+        <p>These are all of <strong><%= tweet.user_handle %></strong>'s messages:</p>
+        <ol>
+          <% Tweet.where(user_handle: tweet.user_handle).each do |item| %> 
+            <li>"<i><%= item.message %></i>"</li>
+          <% end %>
+        </ol>
+
+        <button class="md-close btn btn-lg md-btn-close">CLOSE</button>
+        
       </div>
+    </div>
+  </div>
 
-      <span class="badge"><%= tweet.counter %></span>
-      <h4 class="list-group-item-heading"><%= tweet.user_handle %></h4>
-      <p class="list-group-item-text item-message"><%= tweet.message %></p>
-      <!-- <p class="pull-right">message id: <%= tweet.message_id %></p> -->
-    </a>
-  <% end %>
+    
+<% end %>
+<div class="md-overlay"></div>

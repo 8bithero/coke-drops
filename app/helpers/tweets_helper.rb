@@ -9,8 +9,5 @@ module TweetsHelper
     elsif sentiment < 0
       return "negative"
     end
-    
-  end
-
- 
+  end 
 end

@@ -1,7 +1,7 @@
 
       <div class="box pull-right">
         <div class="pull-left">
-          <div class="drop drop-md positive" onclick="document.getElementById('positive-drop').click();">
+          <div id="positive-filter" class="drop drop-md positive" onclick="document.getElementById('positive-drop').click();">
             <div class="rotate ">     
               <button id="positive-drop"class=" cbutton cbutton--complex cbutton--box cbutton--box-color-4 cbutton--effect-dejan ">
 
@@ -9,14 +9,14 @@
                 <span class="cbutton__helper cbutton__helper--first"><img src="assets/splash_1.svg#color-4" /></span>
                 <span class="cbutton__helper cbutton__helper--second"><img src="assets/splash_2.svg#color-4" /></span>
               </button>
-              <span class="drop-text-md"><%= sprintf '%02d', Tweet.where("sentiment > 0").count %></span>
+              <span class="drop-md-text"><%= sprintf '%02d', Tweet.where("sentiment > 0").count %></span>
             </div>
           </div>
-          <div>Positive</div>
+          <div class="text-center drop-title">POSITIVE</div>
         </div>
 
         <div class="pull-left">
-          <div class="drop drop-md neutral" onclick="document.getElementById('neutral-drop').click();">
+          <div id="neutral-filter" class="drop drop-md neutral" onclick="document.getElementById('neutral-drop').click();">
             <div class="rotate ">     
               <button id="neutral-drop"class=" cbutton cbutton--complex cbutton--box cbutton--box-color-5 cbutton--effect-dejan ">
 
@@ -24,15 +24,15 @@
                 <span class="cbutton__helper cbutton__helper--first"><img src="assets/splash_1.svg#color-5" /></span>
                 <span class="cbutton__helper cbutton__helper--second"><img src="assets/splash_2.svg#color-5" /></span>
               </button>
-              <span class="drop-text-md"><%= sprintf '%02d', Tweet.where("sentiment = 0").count %></span>
+              <span class="drop-md-text"><%= sprintf '%02d', Tweet.where("sentiment = 0").count %></span>
             </div>
           </div>
-          <div>Neutral</div>
+          <div class="text-center drop-title">NEUTRAL</div>
         </div>
 
         <div class="pull-left">
         
-          <div class="drop drop-md negative" onclick="document.getElementById('negative-drop').click();">
+          <div id="negative-filter" class="drop drop-md negative" onclick="document.getElementById('negative-drop').click();">
             <div class="rotate ">     
               <button id="negative-drop"class=" cbutton cbutton--complex cbutton--box cbutton--box-color-6 cbutton--effect-dejan ">
 
@@ -40,34 +40,33 @@
                 <span class="cbutton__helper cbutton__helper--first"><img src="assets/splash_1.svg#color-6" /></span>
                 <span class="cbutton__helper cbutton__helper--second"><img src="assets/splash_2.svg#color-6" /></span>
               </button>
-              <span class="drop-text-md"><%= sprintf '%02d', Tweet.where("sentiment < 0").count %></span>
+              <span class="drop-md-text"><%= sprintf '%02d', Tweet.where("sentiment < 0").count %></span>
             </div>
           </div>
+          <div class="text-center drop-title">NEGATIVE</div>
         </div>
-        <div>Negative</div>
+        
         
         
       </div>
-      <p><%= link_to "Fetch more messages", tweets_path, method: :post, class: "btn btn-lg btn-success" %></p>
-      <p>Total Messages: <%= Tweet.all.count %></p>
+      <p><%= link_to "Fetch more messages", tweets_path, method: :post, class: "btn btn-lg btn-success btn-fetch-messages" %></p>
+      
 
       <br/>
-      <hr/>
+  
+     
+      <div id="show-censored" data-role="fieldcontain">
+        <label for="censored">Highlight <span data-toggle="tooltip" data-placement="top" title="<%= Tweet::WORDLIST.each {|word| puts word}%>">censored tweets</span></label>       
+        <input id="censored" name="censored" type="checkbox" checked onclick="highlightCensored()" />
+        <p class="pull-right">Total Tweets: <%= Tweet.all.count %></p>
+      </div>
 
-      <span class="pull-right">
-        Show:
-        <%= link_to "all", update_list_path(:show => "all"), :remote => true %> | 
-        <%= link_to "positive", update_list_path(:show => "positive"), :remote => true %> | 
-        <%= link_to "neutral", update_list_path(:show => "neutral"), :remote => true %> | 
-        <%= link_to "negative", update_list_path(:show => "negative"), :remote => true %>
-      </span>
-      <br/>
       <div id="tweets_list" class="list-group">
         <%= render partial: "tweet_list", locals: { tweets: @tweets} %>
       </div>
+      
 
-
-
+      
         <script>
       (function() {
 
@@ -108,4 +107,35 @@
         } );
 
       })();
+    </script>
+
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
+    </script>
+
+    <script type="text/javascript">
+    
+      $( "#positive-drop" ).click(function() {
+        $( '#positive-filter' ).toggleClass( "drop-muted" );
+        $( '[data-sentiment="positive"]' ).toggle( "slow" );
+      });
+      $( "#neutral-drop" ).click(function() {
+        $( '#neutral-filter' ).toggleClass( "drop-muted" );
+        $( '[data-sentiment="neutral"]' ).toggle( "slow" );
+      });
+      $( "#negative-drop" ).click(function() {
+        $( '#negative-filter' ).toggleClass( "drop-muted" );
+        $( '[data-sentiment="negative"]' ).toggle( "slow" );
+      });
+
+      function highlightCensored() {
+        if (document.getElementById('censored').checked) {
+            $( '[data-censored="true"]' ).addClass( "highlight" );
+        } else {
+            $( '[data-censored="true"]' ).removeClass( "highlight" );
+        }
+      };
+    
     </script>
