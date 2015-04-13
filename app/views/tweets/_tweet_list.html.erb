@@ -1,7 +1,7 @@
 <% tweets.order(sentiment: :desc).each do |tweet| %>
   <div href="#" class="list-group-item tweet-item <%= 'highlight' if tweet.censored? %>" data-sentiment="<%= sentiment_colour_finder(tweet.sentiment) %>" data-censored="<%= tweet.censored? %>">
     <div class="pull-left">
-      <div class="drop drop-sm <%= sentiment_colour_finder(tweet.sentiment) %>"><%= image_tag("#{sentiment_colour_finder(tweet.sentiment)}.png", class: "drop-img") %></div>
+      <div class="drop drop-sm <%= sentiment_colour_finder(tweet.sentiment) %>"><%= image_tag("#{sentiment_colour_finder(tweet.sentiment)}.png", class: "tweet-item-img") %></div>
       <div class="drop-sm-text"><%= tweet.sentiment %></div>
     </div>
 

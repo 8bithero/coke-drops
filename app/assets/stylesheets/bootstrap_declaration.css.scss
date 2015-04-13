@@ -3,6 +3,9 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,600,400,300,200);
 
+/* ##################*/
+/*       COLOURS     */
+/* ##################*/
 $primary-font: 'Source Sans Pro', sans-serif;
 $grey-text: #777;
 $grey-neutral: #666;
@@ -20,10 +23,64 @@ $red-coke: #fe001a;
 .negative-text:hover { color: $red-negative; }
 
 
+/* ##################*/
+/*       GENERAL     */
+/* ##################*/
 body {
     padding-bottom: 20px;
     padding-top: 20px;
     font-family: $primary-font;
+}
+
+.header, .marketing, .footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header {
+  margin-top: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 20px;
+}
+
+.header h3 {
+    line-height: 40px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.footer {
+    border-top: 1px solid #e5e5e5;
+    color: #777;
+    padding-top: 19px;
+}
+
+@media (min-width: 768px) {
+  .container {
+      max-width: 730px;
+  }
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .header, .marketing, .footer {
+      padding-left: 0;
+      padding-right: 0;
+  }
+  .header {
+      margin-bottom: 30px;
+  }
 }
 
 .btn-fetch-messages{
@@ -31,46 +88,11 @@ body {
   margin-top: 20px;
 }
 
-.filter-01{-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.logo-drop {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 10em;
-  height: 10em;
-  border: none;
-  -webkit-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-  border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-  /*font: normal 100%/normal Arial, Helvetica, sans-serif;*/
-  color: rgba(0,0,0,1);
-  -o-text-overflow: clip;
-  text-overflow: clip;
-  background: $red-coke;
-  -webkit-transform: rotateZ(-45deg)   ;
-  transform: rotateZ(-45deg)   ;
-}
-.logo-text {
-  font-family: $primary-font;
-  font-weight: 200;
-  font-size: 72px;
-  margin-top: 70px !important;
-}
-.drop-title {
-  padding-top: 5px;
-  padding-right: 15px;
-  
-  font-size: 12px;
-  color: #777;
-}
 
 
+/* ##################*/
+/*        DROPS      */
+/* ##################*/
 .drop {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -86,25 +108,29 @@ body {
   -webkit-transform: rotateZ(-45deg)   ;
   transform: rotateZ(-45deg)   ;
   cursor: pointer;
-  /*box-shadow: 3px 2px 1px inset;*/
 }
-.drop-lg {
-  width: 10em;
-  height: 10em;
-}
+
 .drop-sm {
   width: 2em;
   height: 2em;
 }
+
 .drop-md {
   width: 5em;
   height: 5em;
 }
+
+.drop-lg {
+  width: 10em;
+  height: 10em;
+}
+
 .drop-sm-text {
   padding-left: 5px;
   font-size: 12px;
   color: #777; 
 }
+
 .drop-md-text {
   font-family: $primary-font;
   font-size: 3em;
@@ -115,7 +141,29 @@ body {
   position: absolute;
 
 }
-.drop-img {
+
+.drop-lg-text {
+  font-family: $primary-font;
+  font-weight: 200;
+  font-size: 72px;
+  margin-top: 70px !important;
+}
+
+.drop-title {
+  padding-top: 5px;
+  padding-right: 15px;  
+  font-size: 12px;
+  color: #777;
+}
+
+
+
+/* ##################*/
+/*       TWEETS      */
+/* ##################*/
+.list-group { margin-top: 20px;}
+
+.tweet-item-img {
   margin-left: 0.3em;
   margin-top: 0.5em;
   height: 1.2em;
@@ -128,20 +176,20 @@ body {
   color: $grey-text;
   font-weight: 400;
 }
+
 .item-message {
   color: $grey-text;
   font-weight: 300;
   padding-left: 51px;
 }
 
-.highlight {
-  background: #feeeef;
-}
+.highlight { background: #feeeef; }
 
 .tweet-item:first-child {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
 }
+
 .tweet-item:hover {
   text-decoration: none;
   color: #555555;
@@ -149,13 +197,9 @@ body {
 }
 
 
-.list-group { margin-top: 20px;}
-
-.drop-anim{
-  -webkit-transition: color 0.7s;
-  transition: color 0.7s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+/* ##################*/
+/*    FILTER BUTTON  */
+/* ##################*/
 .rotate {
   position:absolute;
    -webkit-transform: rotateZ(45deg) !important   ;
@@ -163,7 +207,8 @@ body {
   top: -18px;
   right: -18px;
 }
-.cbutton {
+
+.fbutton {
   position: relative;
   display: inline-block;
   margin: 1em;
@@ -176,32 +221,28 @@ body {
   -webkit-transition: color 0.7s;
   transition: color 0.7s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  
 }
 
 .drop-muted { background: #dee3e0 !important; }
-.cbutton > span {
+
+.fbutton > span {
   /*-webkit-transform: rotateZ(-90deg) !important   ;
   transform: rotateZ(-90deg) !important  ; */
 }
 
-.cbutton.cbutton--click,
-.cbutton:focus {
+.fbutton.fbutton--click,
+.fbutton:focus {
   outline: none;
   color: #3c8ddc;
 }
 
-.cbutton__icon {
-  display: block;
-}
-
-.cbutton__text {
+.fbutton__text {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.cbutton::after {
+.fbutton::after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -215,77 +256,35 @@ body {
 
 }
 
-.cbutton--box {
+.fbutton--box {
   width: 24px;
   height: 24px;
   border: 4px solid transparent;
-  /*border: 4px solid rgb(22, 35, 47);*/
 }
 
-.cbutton--box-color-1 {
-  background: #ff8b00;
-}
+.fbutton--box-color-4 { background: transparent; }
+.fbutton--box-color-5 { background: transparent; }
+.fbutton--box-color-6 { background: transparent; }
 
-.cbutton--box-color-2 {
-  background: #b61854;
-}
-
-.cbutton--box-color-3 {
-  background: #1d5cab;
-}
-
-.cbutton--box-color-4 {
-  background: transparent;
-}
-
-.cbutton--box-color-5 {
-  background: transparent;
-}
-
-.cbutton--box-color-6 {
-  background: transparent;
-}
-
-.cbutton--box-color-7 {
-  background: #0077ff;
-}
-
-.cbutton--box-color-8 {
-  background: #7bff00;
-}
-
-.cbutton--box-color-9 {
-  background: #fff;
-}
-
-/* Dejan */
-
-.cbutton--effect-dejan::after {
+/* splash */
+.fbutton--effect-splash::after {
   margin: -4px 0 0 -4px;
   width: 8px;
   height: 8px;
 }
 
-.cbutton--box-color-4.cbutton--effect-dejan::after {
-  background: #00fe65;
-}
+.fbutton--box-color-4.fbutton--effect-splash::after { background: #00fe65; }
+.fbutton--box-color-5.fbutton--effect-splash::after { background: #a6a6a6; }
+.fbutton--box-color-6.fbutton--effect-splash::after { background: #fe001a; }
 
-.cbutton--box-color-5.cbutton--effect-dejan::after {
-  background: #a6a6a6;
-}
-
-.cbutton--box-color-6.cbutton--effect-dejan::after {
-  background: #fe001a;
-}
-
-.cbutton--effect-dejan .cbutton__helper {
+.fbutton--effect-splash .fbutton__helper {
   position: absolute;
   bottom: 0;
   opacity: 0;
   pointer-events: none;
 }
 
-.cbutton--effect-dejan .cbutton__helper--first {
+.fbutton--effect-splash .fbutton__helper--first {
   left: -15px;
   width: 30px;
   height: 30px;
@@ -293,7 +292,7 @@ body {
   transform-origin: -40% 50%;
 }
 
-.cbutton--effect-dejan .cbutton__helper--second {
+.fbutton--effect-splash .fbutton__helper--second {
   left: 0px;
   width: 30px;
   height: 60px;
@@ -301,34 +300,34 @@ body {
   transform-origin: 140% 50%;
 }
 
-.cbutton--effect-dejan .cbutton__helper img {
+.fbutton--effect-splash .fbutton__helper img {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.cbutton--effect-dejan.cbutton--click .cbutton__helper--first {
-  -webkit-animation: anim-effect-dejan-1 0.3s ease-out forwards;
-  animation: anim-effect-dejan-1 0.3s ease-out forwards;
+.fbutton--effect-splash.fbutton--click .fbutton__helper--first {
+  -webkit-animation: anim-effect-splash-1 0.3s ease-out forwards;
+  animation: anim-effect-splash-1 0.3s ease-out forwards;
 }
 
-.cbutton--effect-dejan.cbutton--click .cbutton__helper--second {
-  -webkit-animation: anim-effect-dejan-2 0.3s ease-out forwards;
-  animation: anim-effect-dejan-2 0.3s ease-out forwards;
+.fbutton--effect-splash.fbutton--click .fbutton__helper--second {
+  -webkit-animation: anim-effect-splash-2 0.3s ease-out forwards;
+  animation: anim-effect-splash-2 0.3s ease-out forwards;
 }
 
-.cbutton--effect-dejan.cbutton--click .cbutton__helper--first img,
-.cbutton--effect-dejan.cbutton--click .cbutton__helper--second img {
-  -webkit-animation: anim-effect-dejan-3 0.3s ease-in forwards;
-  animation: anim-effect-dejan-3 0.3s ease-in forwards;
+.fbutton--effect-splash.fbutton--click .fbutton__helper--first img,
+.fbutton--effect-splash.fbutton--click .fbutton__helper--second img {
+  -webkit-animation: anim-effect-splash-3 0.3s ease-in forwards;
+  animation: anim-effect-splash-3 0.3s ease-in forwards;
 }
 
-.cbutton--effect-dejan.cbutton--click::after {
-  -webkit-animation: anim-effect-dejan-4 0.3s ease-out forwards;
-  animation: anim-effect-dejan-4 0.3s ease-out forwards;
+.fbutton--effect-splash.fbutton--click::after {
+  -webkit-animation: anim-effect-splash-4 0.3s ease-out forwards;
+  animation: anim-effect-splash-4 0.3s ease-out forwards;
 }
 
-@-webkit-keyframes anim-effect-dejan-1 {
+@-webkit-keyframes anim-effect-splash-1 {
   0% {
     opacity: 1;
   }
@@ -339,7 +338,7 @@ body {
   }
 }
 
-@keyframes anim-effect-dejan-1 {
+@keyframes anim-effect-splash-1 {
   0% {
     opacity: 1;
   }
@@ -350,7 +349,7 @@ body {
   }
 }
 
-@-webkit-keyframes anim-effect-dejan-2 {
+@-webkit-keyframes anim-effect-splash-2 {
   0% {
     opacity: 1;
   }
@@ -361,7 +360,7 @@ body {
   }
 }
 
-@keyframes anim-effect-dejan-2 {
+@keyframes anim-effect-splash-2 {
   0% {
     opacity: 1;
   }
@@ -372,7 +371,7 @@ body {
   }
 }
 
-@-webkit-keyframes anim-effect-dejan-3 {
+@-webkit-keyframes anim-effect-splash-3 {
   0% {
     -webkit-transform: scale3d(0.4, 0.4, 1);
     transform: scale3d(0.4, 0.4, 1);
@@ -389,7 +388,7 @@ body {
   }
 }
 
-@keyframes anim-effect-dejan-3 {
+@keyframes anim-effect-splash-3 {
   0% {
     -webkit-transform: scale3d(0.4, 0.4, 1);
     transform: scale3d(0.4, 0.4, 1);
@@ -406,7 +405,7 @@ body {
   }
 }
 
-@-webkit-keyframes anim-effect-dejan-4 {
+@-webkit-keyframes anim-effect-splash-4 {
   0% {
     opacity: 1;
     -webkit-transform: scale3d(0.1, 0.1, 1);
@@ -424,7 +423,7 @@ body {
   }
 }
 
-@keyframes anim-effect-dejan-4 {
+@keyframes anim-effect-splash-4 {
   0% {
     opacity: 1;
     -webkit-transform: scale3d(0.1, 0.1, 1);
@@ -441,63 +440,12 @@ body {
     transform: translate3d(0, -60px, 0) scale3d(1, 1, 1);
   }
 }
-.header, .marketing, .footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.header {
-  margin-top: 20px;
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 20px;
-}
-.header h3 {
-    line-height: 40px;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-.footer {
-    border-top: 1px solid #e5e5e5;
-    color: #777;
-    padding-top: 19px;
-}
-@media (min-width: 768px) {
-  .container {
-      max-width: 730px;
-  }
-}
-.container-narrow > hr {
-    margin: 30px 0;
-}
-.jumbotron {
-    border-bottom: 1px solid #e5e5e5;
-    text-align: center;
-}
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-.marketing {
-    margin: 40px 0;
-}
-.marketing p + h4 {
-    margin-top: 28px;
-}
-@media screen and (min-width: 768px) {
-  .header, .marketing, .footer {
-      padding-left: 0;
-      padding-right: 0;
-  }
-  .header {
-      margin-bottom: 30px;
-  }
-  .jumbotron {
-      border-bottom: 0 none;
-  }
-}
 
 
-/*##############*/
-/*MODAL*/
+
+/* ##################*/
+/*        MODAL      */
+/* ##################*/
 
 .md-modal {
   position: fixed;
@@ -518,9 +466,7 @@ body {
   transform: translateX(-50%) translateY(-50%);
 }
 
-.md-show {
-  visibility: visible;
-}
+.md-show { visibility: visible; }
 
 .md-overlay {
   position: fixed;
@@ -622,10 +568,8 @@ body {
   font-size: 12px;
 
 }
+
 .md-btn-close:hover{
   color: $grey-neutral;
   background: #ededed ;
 }
-/*.md-title { 
-  font-weight: 700;
-}*/

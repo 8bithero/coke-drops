@@ -11,5 +11,4 @@ FactoryGirl.define do
     # created_at Time.zone.now
     # updated_at Time.zone.now
   end
-  
 end

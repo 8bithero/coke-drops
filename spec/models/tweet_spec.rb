@@ -96,9 +96,8 @@ RSpec.describe Tweet, type: :model do
       end
 
       it "should modify two existing records" do
-
-        expect{Tweet.save_tweets(@tweets_one)}.to change{Tweet.where(message_id: @msg_id_1).first.counter}.by(1).to(2).and
-                                                  change{Tweet.where(message_id: @msg_id_2).first.counter}.by(1).to(2)
+        expect{Tweet.save_tweets(@tweets_one)}.to change{Tweet.where(message_id: @msg_id_1).first.counter}.by(1)
+        expect{Tweet.save_tweets(@tweets_one)}.to change{Tweet.where(message_id: @msg_id_2).first.counter}.by(1)
       end
     end
   end

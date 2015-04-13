@@ -1,6 +1,6 @@
 class Tweet < ActiveRecord::Base
 
-  # FILTERS & VALIDATIONS
+  # VALIDATIONS, CONSTANTS & SCOPES
   #-----------------------------------------------------------------------
   validates :message_id,   presence: true
   validates :message,      presence: true
@@ -17,24 +17,18 @@ class Tweet < ActiveRecord::Base
   #-----------------------------------------------------------------------
   def self.get_new_tweets
     tweets = HTTParty.get "http://adaptive-test-api.herokuapp.com/tweets.json"
-    # if response.success?
+    # unless response.success?
     #   JSON.parse(response.body)
     # end
+    # raise tweets.inspect if !tweets.success?
+    
   end
 
-  # def load_new_tweets_json
-  #   response = HTTParty.get(URI::encode('http://localhost:8081/producer.json?valid_date=' + Time.now.httpdate))
-  #   if response.success?
-  #     JSON.parse(response.body)
-  #   end
-  # end
 
   def self.save_tweets(new_tweets)
     @tweets = Tweet.all
 
-    # raise new_tweets.inspect
     new_tweets.each do |tweet|
-      # raise tweet.inspect
       if @tweets.where( message_id: tweet["id"]).exists?
         existing_tweet = @tweets.where( message_id: tweet["id"]).first
         
