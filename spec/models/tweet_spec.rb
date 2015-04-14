@@ -102,4 +102,16 @@ RSpec.describe Tweet, type: :model do
     end
   end
 
+  describe '#word_checker' do
+    it 'should return true if word exists' do
+      message = "Hello coke world"
+      expect(Tweet.word_checker(message)).to eq(true)
+    end
+
+    it 'should return true if word exists' do
+      message = "Hello pepsi world"
+      expect(Tweet.word_checker(message)).to eq(false)
+    end
+  end
+
 end

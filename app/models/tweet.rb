@@ -16,12 +16,7 @@ class Tweet < ActiveRecord::Base
   # METHODS
   #-----------------------------------------------------------------------
   def self.get_new_tweets
-    tweets = HTTParty.get "http://adaptive-test-api.herokuapp.com/tweets.json"
-    # unless response.success?
-    #   JSON.parse(response.body)
-    # end
-    # raise tweets.inspect if !tweets.success?
-    
+    tweets = HTTParty.get "http://adaptive-test-api.herokuapp.com/tweets.json"   
   end
 
 
@@ -52,9 +47,9 @@ class Tweet < ActiveRecord::Base
   
 
   private
-  def self.word_checker(message)
-    result = false 
-    WORDLIST.each { |word| result = true if message.include? word }
-    result
-  end
+    def self.word_checker(message)
+      result = false 
+      WORDLIST.each { |word| result = true if message.include? word }
+      result
+    end
 end
