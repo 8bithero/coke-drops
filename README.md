@@ -2,7 +2,8 @@
 
 ##Introduction
 The app has been build as part of the Adaptive Lab test. It has been built using Ruby On Rails v4.2.1 running on Ruby v2.1.5 and Capybara & RSPEC for testing. 
-App is best viewed using the latest version of Firefox or Chrome.
+
+*The app has only been configured to display correctly using* **Firefox***. Please use the latest version of* **Mozilla Firefox** for the best viewing experience.*
 
 A working demo of the app can be found at http://coke-drops.herokuapp.com
 
@@ -28,10 +29,11 @@ A working demo of the app can be found at http://coke-drops.herokuapp.com
 
 ```
 $ bundle install
-$ rake db:create db:migrate
+$ rake db:setup
 ```
 
 ##Starting the application
+Start the rails server by running
 
 ```
 $ rails s
@@ -39,14 +41,20 @@ $ rails s
 
 ## Using the application
 
-To view messages all about Coke, visit the messages page at /messages/index.
-Application testing
-
-This application is covered by automated tests written using Capybara and RSpec.
+To access the app, simply run the server start command above and navigate to localhost:3000 or find the live demo at http://coke-drops.herokuapp.com
 
 
 ### Running tests with RSpec
 
+This application is covered by automated tests written using Capybara and RSpec.
+
 ```
 $ bundle exec rspec
+```
+
+### Accessing data
+In the usual rails way data can be accessed using
+
+```
+$ rails c --sandbox
 ```
